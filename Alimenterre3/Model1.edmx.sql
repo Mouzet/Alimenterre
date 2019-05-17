@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/17/2019 14:03:05
--- Generated from EDMX file: C:\Users\mermo\Desktop\Alimenterre3\Alimenterre3\Model1.edmx
+-- Date Created: 05/17/2019 14:21:15
+-- Generated from EDMX file: C:\Users\david\source\repos\Mouzet\Alimenterre\Alimenterre3\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,74 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_UserRecommandations]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RecommandationsSet] DROP CONSTRAINT [FK_UserRecommandations];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserProduit_User]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserProduit] DROP CONSTRAINT [FK_UserProduit_User];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserProduit_Produit]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserProduit] DROP CONSTRAINT [FK_UserProduit_Produit];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProduitProduitCategory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Produits] DROP CONSTRAINT [FK_ProduitProduitCategory];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CompetenceUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_CompetenceUser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ActiviteUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_ActiviteUser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserLocalisation]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserLocalisation];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LocalisationCanton]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Localisations] DROP CONSTRAINT [FK_LocalisationCanton];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EvenementLocalisation]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Evenements] DROP CONSTRAINT [FK_EvenementLocalisation];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CategoryUserUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_CategoryUserUser];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users];
+GO
+IF OBJECT_ID(N'[dbo].[UserCategories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserCategories];
+GO
+IF OBJECT_ID(N'[dbo].[RecommandationsSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RecommandationsSet];
+GO
+IF OBJECT_ID(N'[dbo].[ProduitCategories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProduitCategories];
+GO
+IF OBJECT_ID(N'[dbo].[Produits]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Produits];
+GO
+IF OBJECT_ID(N'[dbo].[Localisations]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Localisations];
+GO
+IF OBJECT_ID(N'[dbo].[Cantons]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Cantons];
+GO
+IF OBJECT_ID(N'[dbo].[Activites]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Activites];
+GO
+IF OBJECT_ID(N'[dbo].[Evenements]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Evenements];
+GO
+IF OBJECT_ID(N'[dbo].[Competences]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Competences];
+GO
+IF OBJECT_ID(N'[dbo].[UserProduit]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserProduit];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
