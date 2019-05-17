@@ -11,6 +11,7 @@ namespace Alimenterre3.Controllers
         public ActionResult Index()
         {
             return View();
+            Console.Write("Mouzeeeeeeeeeeeeeeet");
         }
 
         public ActionResult About()
