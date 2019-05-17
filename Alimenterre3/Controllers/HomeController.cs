@@ -42,7 +42,7 @@ namespace Alimenterre3.Controllers
         }
 
         [HttpPost]
-        public ActionResult(RechercheVM vm)
+        public ActionResult Affichage(RechercheVM vm)
         {
             string NomCanton = vm.canton;
             string NomProduit = vm.produit;
@@ -50,10 +50,10 @@ namespace Alimenterre3.Controllers
             string NomCompetence = vm.competences;
             string NomActivite = vm.activite;
 
+            List<DTO.User> list = UserManager.GetUsers(NomCanton, NomProduit, NomCategorie, NomCompetence, NomActivite);
 
 
-
-               
+            return View("ListAllRoom", list);
         }
     }
 }

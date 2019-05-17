@@ -24,8 +24,11 @@ namespace DAL
                     string query = "SELECT * FROM USERS WHERE Id = @idUser";
 
                     SqlCommand command = new SqlCommand(query, cn);
+
                     command.Parameters.AddWithValue("@Id", idUser);
+
                     cn.Open();
+
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         reader.Read();
@@ -47,9 +50,11 @@ namespace DAL
 
 
                     }
-                    }
                 }
-            catch {
+            }
+            catch
+            {
+
             }
             return null;
 
