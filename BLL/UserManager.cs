@@ -26,26 +26,50 @@ namespace BLL
                     {
                         if (user.IdLocalisation == id)
                             result.Add(user);
-                    }
+                    }                
+                }
+
+                // Retire les users deja selectionnés de la liste
+                foreach(User user in result)
+                {
+                    listUser.Remove(user);
                 }
             }
 
             // Ici on controle que la produise la bonne categorie de ressources
-            if (IdCategorieProduit != 0)
+            if (IdProduit != 0)
             {
-                List<int> listLocalisation = LocalisationDB.GetLocByIdCanton(IdCanton);
-                foreach (User user in listUser)
+                List<int> listUserProd = UserProduitDB.GetUserId(IdProduit);
+                foreach (int idUser in listUserProd)
                 {
-                    foreach (int id in listLocalisation)
+                    foreach (User user in listUser)
                     {
-                        if (user.IdLocalisation == id)
+                        if (user.IdUser == idUser)
+                            result.Add(user);
+                    }
+                }
+
+                // Retire les users deja selectionnés de la liste
+                foreach (User user in result)
+                {
+                    listUser.Remove(user);
+                }
+            }
+            else if(IdCategorieProduit != 0)
+            {
+
+                List<int> listUserProd = UserProduitDB.GetUserIdFromCat(IdCategorieProduit);
+                foreach (int idUser in listUserProd)
+                {
+                    foreach (User user in listUser)
+                    {
+                        if (user.IdUser == idUser)
                             result.Add(user);
                     }
                 }
             }
 
-
-
+            return result;
         }
     }
 }
