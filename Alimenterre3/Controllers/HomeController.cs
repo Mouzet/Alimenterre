@@ -41,5 +41,19 @@ namespace Alimenterre3.Controllers
             return View(vm);
         }
 
+        [HttpPost]
+        public ActionResult(RechercheVM vm)
+        {
+            string NomCanton = vm.canton;
+            string NomProduit = vm.produit;
+            string NomCategorie = vm.typeProduit;
+            string NomCompetence = vm.competences;
+            string NomActivite = vm.activite;
+
+
+
+
+               
+        }
     }
 }

@@ -12,9 +12,11 @@ namespace DAL
     public class UserDB
     {
         // Requête permettant de retrouver un user selon les critères choisis
-        public static List<User> GetUsers(int IdCompetence, int IdActivite)
+        public static List<User> GetUsers(string Competence, string Activite)
         {
             List<User> result = null;
+            int IdCompetence = 0;
+            int IdActivite = 0;
 
             string connectionString = ConfigurationManager.ConnectionStrings["AlimenterreDB"].ConnectionString;
 
@@ -24,12 +26,19 @@ namespace DAL
                 {          
                     string query = "SELECT * FROM Users WHERE Id = Id ";
 
-                    if (IdCompetence != 0)
+                    if (Competence != null)
+                    {
+                        IdCompetence = UserDB.GetIdCompetence(Competence);
                         query += "AND Competence_Id = @IdCompetence ";
+                    }
+                        
 
-                    if (IdActivite != 0)
+                    if (Activite != null)
+                    {
+                        IdActivite = UserDB.GetIdActivite(Activite);
                         query += "AND Activite_Id = @IdActivite";
-
+                    }
+                        
                     SqlCommand cmd = new SqlCommand(query, cn);
 
                     cmd.Parameters.AddWithValue("@IdCompetence", IdCompetence);
@@ -37,6 +46,161 @@ namespace DAL
 
                     cn.Open();
 
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public static int GetIdCanton(string NomCanton)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["AlimenterreDB"].ConnectionString;
+            int result;
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT Id FROM Cantons WHERE NomCanton = @Nom ";
+
+                    SqlCommand cmd = new SqlCommand(query, cn);
+
+                    cmd.Parameters.AddWithValue("@Nom", NomCanton);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        result = (int)dr["Id"];
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public static int GetIdProduit(string NomProduit)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["AlimenterreDB"].ConnectionString;
+            int result;
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT Id FROM Produits WHERE NomProduit = @Nom ";
+
+                    SqlCommand cmd = new SqlCommand(query, cn);
+
+                    cmd.Parameters.AddWithValue("@Nom", NomProduit);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        result = (int)dr["Id"];
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public static int GetIdCategorie(string NomCategorie)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["AlimenterreDB"].ConnectionString;
+            int result;
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT Id FROM ProduitCategories WHERE NomCategorie = @Nom ";
+
+                    SqlCommand cmd = new SqlCommand(query, cn);
+
+                    cmd.Parameters.AddWithValue("@Nom", NomCategorie);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        result = (int)dr["Id"];
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public static int GetIdCompetence(string NomCompetence)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["AlimenterreDB"].ConnectionString;
+            int result;
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT Id FROM Competences WHERE NomCompetence = @Nom ";
+
+                    SqlCommand cmd = new SqlCommand(query, cn);
+
+                    cmd.Parameters.AddWithValue("@Nom", NomCompetence);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        result = (int)dr["Id"];
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public static int GetIdActivite(string NomActivite)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["AlimenterreDB"].ConnectionString;
+            int result;
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT Id FROM Competences WHERE NomCompetence = @Nom ";
+
+                    SqlCommand cmd = new SqlCommand(query, cn);
+
+                    cmd.Parameters.AddWithValue("@Nom", NomActivite);
+
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        result = (int)dr["Id"];
+                    }
                 }
             }
             catch (Exception e)
