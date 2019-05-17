@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Alimenterre3.ViewModels;
 using BLL;
+using DTO;
 
 namespace Alimenterre3.Controllers
 {
@@ -34,8 +35,27 @@ namespace Alimenterre3.Controllers
             return View();
         }
 
+        public ActionResult InfosProducteur(int id)
+        {
+            DTO.User user = new DTO.User();
+            user = UserManager.GetInfos(id);
+            return View(user);
+        }
+
         [HttpGet]
         public ActionResult Affichage()
+        {
+            RechercheVM vm = new RechercheVM();
+            return View(vm);
+        }
+        [HttpGet]
+        public ActionResult Affichage2()
+        {
+            RechercheVM vm = new RechercheVM();
+            return View(vm);
+        }
+        [HttpGet]
+        public ActionResult Affichage3()
         {
             RechercheVM vm = new RechercheVM();
             return View(vm);

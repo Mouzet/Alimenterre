@@ -11,7 +11,7 @@ namespace DAL
 {
     public class UserDB
     {
-        public static User getInfos(int idUser)
+        public static User GetInfos(int idUser)
         {
             
 
