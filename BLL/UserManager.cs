@@ -11,11 +11,13 @@ namespace BLL
 {
     public class UserManager
     {
-        public static User getInfos(int idUser)
+        public static User GetInfos(int idUser)
         {
+            User user = UserDB.GetInfos(idUser);
 
+            return user;
         }
-        public static List<User> GetUsers(int IdCanton, int IdProduit, int IdCategorieProduit, int IdCompetence, int IdActivite)
+        public static List<User> GetUsers(string Canton, string Produit, string CategorieProduit, string Competence, string Activite)
         {
             List<User> result = new List<User>();
 
