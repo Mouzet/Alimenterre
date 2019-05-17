@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Users" EntityType="Model1.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserCategories" EntityType="Model1.Store.UserCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RecommandationsSet" EntityType="Model1.Store.RecommandationsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProduitCategories" EntityType="Model1.Store.ProduitCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Produits" EntityType="Model1.Store.Produits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Localisations" EntityType="Model1.Store.Localisations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cantons" EntityType="Model1.Store.Cantons" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Activites" EntityType="Model1.Store.Activites" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Evenements" EntityType="Model1.Store.Evenements" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Competences" EntityType="Model1.Store.Competences" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserProduit" EntityType="Model1.Store.UserProduit" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserRecommandations" Association="Model1.Store.UserRecommandations">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Recommandations" EntitySet="RecommandationsSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProduit_User" Association="Model1.Store.FK_UserProduit_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserProduit" EntitySet="UserProduit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProduit_Produit" Association="Model1.Store.FK_UserProduit_Produit">
+      <End Role="Produit" EntitySet="Produits" />
+      <End Role="UserProduit" EntitySet="UserProduit" />
+    </AssociationSet>
+    <AssociationSet Name="ProduitProduitCategory" Association="Model1.Store.ProduitProduitCategory">
+      <End Role="Produit" EntitySet="Produits" />
+      <End Role="ProduitCategory" EntitySet="ProduitCategories" />
+    </AssociationSet>
+    <AssociationSet Name="CompetenceUser" Association="Model1.Store.CompetenceUser">
+      <End Role="Competence" EntitySet="Competences" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="ActiviteUser" Association="Model1.Store.ActiviteUser">
+      <End Role="Activite" EntitySet="Activites" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserLocalisation" Association="Model1.Store.UserLocalisation">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Localisation" EntitySet="Localisations" />
+    </AssociationSet>
+    <AssociationSet Name="LocalisationCanton" Association="Model1.Store.LocalisationCanton">
+      <End Role="Localisation" EntitySet="Localisations" />
+      <End Role="Canton" EntitySet="Cantons" />
+    </AssociationSet>
+    <AssociationSet Name="EvenementLocalisation" Association="Model1.Store.EvenementLocalisation">
+      <End Role="Evenement" EntitySet="Evenements" />
+      <End Role="Localisation" EntitySet="Localisations" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryUserUser" Association="Model1.Store.CategoryUserUser">
+      <End Role="CategoryUser" EntitySet="UserCategories" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prenom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Société" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Adresse" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telephone" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TypeProduit" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NomProduit" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Competence_Id" Type="int" Nullable="false" />
+    <Property Name="Activite_Id" Type="int" Nullable="false" />
+    <Property Name="Localisation_Id" Type="int" Nullable="false" />
+    <Property Name="CategoryUser_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomCatUser" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecommandationsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Commentaire" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProduitCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomCategorie" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Produits">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomProduit" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProduitCategory_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Localisations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomLocalite" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NPA" Type="int" Nullable="false" />
+    <Property Name="Canton_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cantons">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomCanton" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Activites">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomActivite" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Evenements">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomEvenement" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Localisation_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Competences">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomCompetence" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserProduit">
+    <Key>
+      <PropertyRef Name="User_Id" />
+      <PropertyRef Name="Produit_Id" />
+    </Key>
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Produit_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UserRecommandations">
+    <End Role="User" Type="Model1.Store.Users" Multiplicity="1" />
+    <End Role="Recommandations" Type="Model1.Store.RecommandationsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Recommandations">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProduitProduitCategory">
+    <End Role="Produit" Type="Model1.Store.Produits" Multiplicity="*" />
+    <End Role="ProduitCategory" Type="Model1.Store.ProduitCategories" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProduitCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Produit">
+        <PropertyRef Name="ProduitCategory_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompetenceUser">
+    <End Role="Competence" Type="Model1.Store.Competences" Multiplicity="1" />
+    <End Role="User" Type="Model1.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competence">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Competence_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActiviteUser">
+    <End Role="Activite" Type="Model1.Store.Activites" Multiplicity="1" />
+    <End Role="User" Type="Model1.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activite">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Activite_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserLocalisation">
+    <End Role="User" Type="Model1.Store.Users" Multiplicity="*" />
+    <End Role="Localisation" Type="Model1.Store.Localisations" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Localisation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Localisation_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LocalisationCanton">
+    <End Role="Localisation" Type="Model1.Store.Localisations" Multiplicity="*" />
+    <End Role="Canton" Type="Model1.Store.Cantons" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Canton">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Localisation">
+        <PropertyRef Name="Canton_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EvenementLocalisation">
+    <End Role="Evenement" Type="Model1.Store.Evenements" Multiplicity="*" />
+    <End Role="Localisation" Type="Model1.Store.Localisations" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Localisation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evenement">
+        <PropertyRef Name="Localisation_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryUserUser">
+    <End Role="CategoryUser" Type="Model1.Store.UserCategories" Multiplicity="1" />
+    <End Role="User" Type="Model1.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="CategoryUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProduit_User">
+    <End Role="User" Type="Model1.Store.Users" Multiplicity="1" />
+    <End Role="UserProduit" Type="Model1.Store.UserProduit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserProduit">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProduit_Produit">
+    <End Role="UserProduit" Type="Model1.Store.UserProduit" Multiplicity="*" />
+    <End Role="Produit" Type="Model1.Store.Produits" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Produit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserProduit">
+        <PropertyRef Name="Produit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Model1.User" />
+          <EntitySet Name="UserCategories" EntityType="Model1.CategoryUser" />
+          <EntitySet Name="RecommandationsSet" EntityType="Model1.Recommandations" />
+          <EntitySet Name="ProduitCategories" EntityType="Model1.ProduitCategory" />
+          <EntitySet Name="Produits" EntityType="Model1.Produit" />
+          <EntitySet Name="Localisations" EntityType="Model1.Localisation" />
+          <EntitySet Name="Cantons" EntityType="Model1.Canton" />
+          <EntitySet Name="Activites" EntityType="Model1.Activite" />
+          <EntitySet Name="Evenements" EntityType="Model1.Evenement" />
+          <EntitySet Name="Competences" EntityType="Model1.Competence" />
+          <AssociationSet Name="UserRecommandations" Association="Model1.UserRecommandations">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Recommandations" EntitySet="RecommandationsSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserProduit" Association="Model1.UserProduit">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Produit" EntitySet="Produits" />
+          </AssociationSet>
+          <AssociationSet Name="ProduitProduitCategory" Association="Model1.ProduitProduitCategory">
+            <End Role="Produit" EntitySet="Produits" />
+            <End Role="ProduitCategory" EntitySet="ProduitCategories" />
+          </AssociationSet>
+          <AssociationSet Name="CompetenceUser" Association="Model1.CompetenceUser">
+            <End Role="Competence" EntitySet="Competences" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="ActiviteUser" Association="Model1.ActiviteUser">
+            <End Role="Activite" EntitySet="Activites" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserLocalisation" Association="Model1.UserLocalisation">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Localisation" EntitySet="Localisations" />
+          </AssociationSet>
+          <AssociationSet Name="LocalisationCanton" Association="Model1.LocalisationCanton">
+            <End Role="Localisation" EntitySet="Localisations" />
+            <End Role="Canton" EntitySet="Cantons" />
+          </AssociationSet>
+          <AssociationSet Name="EvenementLocalisation" Association="Model1.EvenementLocalisation">
+            <End Role="Evenement" EntitySet="Evenements" />
+            <End Role="Localisation" EntitySet="Localisations" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryUserUser" Association="Model1.CategoryUserUser">
+            <End Role="CategoryUser" EntitySet="UserCategories" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" />
+          <Property Name="Prenom" Type="String" Nullable="false" />
+          <Property Name="Société" Type="String" Nullable="true" />
+          <Property Name="Adresse" Type="String" Nullable="false" />
+          <Property Name="Telephone" Type="String" Nullable="true" />
+          <Property Name="Mail" Type="String" Nullable="false" />
+          <Property Name="TypeProduit" Type="String" Nullable="false" />
+          <Property Name="NomProduit" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <NavigationProperty Name="Recommandations" Relationship="Model1.UserRecommandations" FromRole="User" ToRole="Recommandations" />
+          <NavigationProperty Name="Produit" Relationship="Model1.UserProduit" FromRole="User" ToRole="Produit" />
+          <NavigationProperty Name="Competence" Relationship="Model1.CompetenceUser" FromRole="User" ToRole="Competence" />
+          <NavigationProperty Name="Activite" Relationship="Model1.ActiviteUser" FromRole="User" ToRole="Activite" />
+          <NavigationProperty Name="Localisation" Relationship="Model1.UserLocalisation" FromRole="User" ToRole="Localisation" />
+          <NavigationProperty Name="CategoryUser" Relationship="Model1.CategoryUserUser" FromRole="User" ToRole="CategoryUser" />
+        </EntityType>
+        <EntityType Name="CategoryUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomCatUser" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.CategoryUserUser" FromRole="CategoryUser" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Recommandations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Commentaire" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.UserRecommandations" FromRole="Recommandations" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ProduitCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomCategorie" Type="String" Nullable="false" />
+          <NavigationProperty Name="Produit" Relationship="Model1.ProduitProduitCategory" FromRole="ProduitCategory" ToRole="Produit" />
+        </EntityType>
+        <EntityType Name="Produit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomProduit" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.UserProduit" FromRole="Produit" ToRole="User" />
+          <NavigationProperty Name="ProduitCategory" Relationship="Model1.ProduitProduitCategory" FromRole="Produit" ToRole="ProduitCategory" />
+        </EntityType>
+        <EntityType Name="Localisation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomLocalite" Type="String" Nullable="false" />
+          <Property Name="NPA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.UserLocalisation" FromRole="Localisation" ToRole="User" />
+          <NavigationProperty Name="Canton" Relationship="Model1.LocalisationCanton" FromRole="Localisation" ToRole="Canton" />
+          <NavigationProperty Name="Evenement" Relationship="Model1.EvenementLocalisation" FromRole="Localisation" ToRole="Evenement" />
+        </EntityType>
+        <EntityType Name="Canton">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomCanton" Type="String" Nullable="false" />
+          <NavigationProperty Name="Localisation" Relationship="Model1.LocalisationCanton" FromRole="Canton" ToRole="Localisation" />
+        </EntityType>
+        <EntityType Name="Activite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomActivite" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.ActiviteUser" FromRole="Activite" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Evenement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomEvenement" Type="String" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Localisation" Relationship="Model1.EvenementLocalisation" FromRole="Evenement" ToRole="Localisation" />
+        </EntityType>
+        <EntityType Name="Competence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomCompetence" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.CompetenceUser" FromRole="Competence" ToRole="User" />
+        </EntityType>
+        <Association Name="UserRecommandations">
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+          <End Type="Model1.Recommandations" Role="Recommandations" Multiplicity="*" />
+        </Association>
+        <Association Name="UserProduit">
+          <End Type="Model1.User" Role="User" Multiplicity="*" />
+          <End Type="Model1.Produit" Role="Produit" Multiplicity="*" />
+        </Association>
+        <Association Name="ProduitProduitCategory">
+          <End Type="Model1.Produit" Role="Produit" Multiplicity="*" />
+          <End Type="Model1.ProduitCategory" Role="ProduitCategory" Multiplicity="1" />
+        </Association>
+        <Association Name="CompetenceUser">
+          <End Type="Model1.Competence" Role="Competence" Multiplicity="1" />
+          <End Type="Model1.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="ActiviteUser">
+          <End Type="Model1.Activite" Role="Activite" Multiplicity="1" />
+          <End Type="Model1.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="UserLocalisation">
+          <End Type="Model1.User" Role="User" Multiplicity="*" />
+          <End Type="Model1.Localisation" Role="Localisation" Multiplicity="1" />
+        </Association>
+        <Association Name="LocalisationCanton">
+          <End Type="Model1.Localisation" Role="Localisation" Multiplicity="*" />
+          <End Type="Model1.Canton" Role="Canton" Multiplicity="1" />
+        </Association>
+        <Association Name="EvenementLocalisation">
+          <End Type="Model1.Evenement" Role="Evenement" Multiplicity="*" />
+          <End Type="Model1.Localisation" Role="Localisation" Multiplicity="1" />
+        </Association>
+        <Association Name="CategoryUserUser">
+          <End Type="Model1.CategoryUser" Role="CategoryUser" Multiplicity="1" />
+          <End Type="Model1.User" Role="User" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Société" ColumnName="Société" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="TypeProduit" ColumnName="TypeProduit" />
+          <ScalarProperty Name="NomProduit" ColumnName="NomProduit" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.CategoryUser)">
+        <MappingFragment StoreEntitySet="UserCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NomCatUser" ColumnName="NomCatUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecommandationsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Recommandations)">
+        <MappingFragment StoreEntitySet="RecommandationsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProduitCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.ProduitCategory)">
+        <MappingFragment StoreEntitySet="ProduitCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NomCategorie" ColumnName="NomCategorie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produits">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Produit)">
+        <MappingFragment StoreEntitySet="Produits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NomProduit" ColumnName="NomProduit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Localisations">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Localisation)">
+        <MappingFragment StoreEntitySet="Localisations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NomLocalite" ColumnName="NomLocalite" />
+          <ScalarProperty Name="NPA" ColumnName="NPA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cantons">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Canton)">
+        <MappingFragment StoreEntitySet="Cantons">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NomCanton" ColumnName="NomCanton" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Activites">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Activite)">
+        <MappingFragment StoreEntitySet="Activites">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NomActivite" ColumnName="NomActivite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evenements">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Evenement)">
+        <MappingFragment StoreEntitySet="Evenements">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NomEvenement" ColumnName="NomEvenement" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Competences">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Competence)">
+        <MappingFragment StoreEntitySet="Competences">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NomCompetence" ColumnName="NomCompetence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserRecommandations" TypeName="Model1.UserRecommandations" StoreEntitySet="RecommandationsSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Recommandations">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserProduit" TypeName="Model1.UserProduit" StoreEntitySet="UserProduit">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Produit">
+        <ScalarProperty Name="Id" ColumnName="Produit_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProduitProduitCategory" TypeName="Model1.ProduitProduitCategory" StoreEntitySet="Produits">
+      <EndProperty Name="ProduitCategory">
+        <ScalarProperty Name="Id" ColumnName="ProduitCategory_Id" />
+      </EndProperty>
+      <EndProperty Name="Produit">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CompetenceUser" TypeName="Model1.CompetenceUser" StoreEntitySet="Users">
+      <EndProperty Name="Competence">
+        <ScalarProperty Name="Id" ColumnName="Competence_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ActiviteUser" TypeName="Model1.ActiviteUser" StoreEntitySet="Users">
+      <EndProperty Name="Activite">
+        <ScalarProperty Name="Id" ColumnName="Activite_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserLocalisation" TypeName="Model1.UserLocalisation" StoreEntitySet="Users">
+      <EndProperty Name="Localisation">
+        <ScalarProperty Name="Id" ColumnName="Localisation_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LocalisationCanton" TypeName="Model1.LocalisationCanton" StoreEntitySet="Localisations">
+      <EndProperty Name="Canton">
+        <ScalarProperty Name="Id" ColumnName="Canton_Id" />
+      </EndProperty>
+      <EndProperty Name="Localisation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EvenementLocalisation" TypeName="Model1.EvenementLocalisation" StoreEntitySet="Evenements">
+      <EndProperty Name="Localisation">
+        <ScalarProperty Name="Id" ColumnName="Localisation_Id" />
+      </EndProperty>
+      <EndProperty Name="Evenement">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CategoryUserUser" TypeName="Model1.CategoryUserUser" StoreEntitySet="Users">
+      <EndProperty Name="CategoryUser">
+        <ScalarProperty Name="Id" ColumnName="CategoryUser_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

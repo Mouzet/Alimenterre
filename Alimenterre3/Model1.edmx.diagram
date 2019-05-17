@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd8d5d32e0f94057ad57e50fa46d14d9" Name="Diagram1" ZoomLevel="66" >
+        <EntityTypeShape EntityType="Model1.User" Width="1.5" PointX="8.25" PointY="1.5" />
+        <EntityTypeShape EntityType="Model1.CategoryUser" Width="1.5" PointX="3.625" PointY="1.375" />
+        <EntityTypeShape EntityType="Model1.Recommandations" Width="1.5" PointX="5.75" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.ProduitCategory" Width="1.5" PointX="13.25" PointY="1.125" />
+        <EntityTypeShape EntityType="Model1.Produit" Width="1.5" PointX="10.625" PointY="1.125" />
+        <EntityTypeShape EntityType="Model1.Localisation" Width="1.5" PointX="3.625" PointY="3.5" />
+        <EntityTypeShape EntityType="Model1.Canton" Width="1.5" PointX="1" PointY="3.5" />
+        <EntityTypeShape EntityType="Model1.Activite" Width="1.5" PointX="11" PointY="4.625" />
+        <EntityTypeShape EntityType="Model1.Evenement" Width="1.5" PointX="6.125" PointY="4.375" />
+        <EntityTypeShape EntityType="Model1.Competence" Width="1.5" PointX="12.875" PointY="2.875" />
+        <AssociationConnector Association="Model1.UserRecommandations" />
+        <AssociationConnector Association="Model1.UserProduit" />
+        <AssociationConnector Association="Model1.ProduitProduitCategory" />
+        <AssociationConnector Association="Model1.CompetenceUser" />
+        <AssociationConnector Association="Model1.ActiviteUser" />
+        <AssociationConnector Association="Model1.UserLocalisation" />
+        <AssociationConnector Association="Model1.LocalisationCanton" />
+        <AssociationConnector Association="Model1.EvenementLocalisation" />
+        <AssociationConnector Association="Model1.CategoryUserUser" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
