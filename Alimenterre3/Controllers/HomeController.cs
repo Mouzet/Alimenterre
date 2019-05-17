@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BLL;
 
 namespace Alimenterre3.Controllers
 {
@@ -11,7 +12,6 @@ namespace Alimenterre3.Controllers
         public ActionResult Index()
         {
             return View();
-            Console.Write("Mouzeeeeeeeeeeeeeeet");
         }
 
         public ActionResult About()
@@ -26,6 +26,20 @@ namespace Alimenterre3.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Signin()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Affichage()
+        {
+
+            List<User> users = new List<User>();
+            users = UserManager.GetUsers();
+
+            return View(users);
         }
     }
 }

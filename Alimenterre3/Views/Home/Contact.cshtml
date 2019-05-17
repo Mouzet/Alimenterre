@@ -1,17 +1,93 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿
+@{
+    ViewBag.Title = "Recherche pour le Transformateur";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="choix hidden">
+    <form>
+        <input type="radio" name="user" value="producteur"> Producteur<br />
+        <input type="radio" name="user1" value="transformateur" > Transformateur<br />
+        <input type="radio" name="user2" value="tiers" > Tiers<br />
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    </form>
+</div>
+<h2><em>Recherche pour le Transformateur </em></h2>
+
+<!-- Création du formulaire-->
+<br />
+<div>
+    <h4>
+        Canton :
+        <select name="canton">
+            <option value=""></option>
+            <option value="valais">Valais</option>
+            <option value="vaud">Vaud</option>
+            <option value="geneve">Genève</option>
+            <option value="fribourg">Fribourg</option>
+        </select>
+    </h4>
+</div>
+
+<br />
+
+<div>
+    <h4>
+        Categorie Produit :
+        <select name="categorieProduit">
+            <option value=""></option>
+            <option value="legume">Légume</option>
+            <option value="cereale">Céréale</option>
+            <option value="laitier">Laitier</option>
+            <option value="viande">Viande</option>
+        </select>
+    </h4>
+</div>
+
+<br />
+
+<div>
+    <h4>
+        Produit
+        <select name="produit">
+            <option value=""></option>
+            <option value="tomate">Tomate</option>
+            <option value="poivron">Poivron</option>
+            <option value="houblon">Houblon</option>
+            <option value="ble">Blé</option>
+            <option value="lait">Lait</option>
+            <option value="mouton">Mouton</option>
+        </select>
+    </h4>
+</div>
+
+<br />
+
+<div>
+    <h4>
+        Compétences :
+        <select name="competences">
+            <option value=""></option>
+            <option value="gestion">Gestion-Coordination au développement</option>
+            <option value="accompagnement">Accompagnement de projet</option>
+            <option value="guichet">Mise en oeuvre et gestion guichet</option>
+        </select>
+    </h4>
+</div>
+
+<br />
+
+<div>
+    <h4>Activité :
+    <select name="activite">
+        <option value=""></option>
+        <option value="brasseur">Brasseur</option>
+        <option value="maraicher">Maraîcher</option>
+        <option value="agriculteur">Agriculteur</option>
+    </select></h4>
+
+</div>
+
+
+
+
+
