@@ -15,11 +15,11 @@ namespace DTO
         public string Adresse { get; set; }
         public string Telephone { get; set; }
         public string Mail { get; set; }
-        public string Descritpion { get; set; }
-        public string IdCompetence { get; set; }
+        public string Description { get; set; }
+        public int IdCompetence { get; set; }
         public int IdActivite { get; set; }
         public int IdLocalisation { get; set; }
         public int IdCategoryUser { get; set; }
-
+        
     }
 }

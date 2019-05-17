@@ -37,9 +37,16 @@ namespace Alimenterre3.Controllers
         {
 
             List<User> users = new List<User>();
-            users = UserManager.GetUsers();
+             users = UserManager.GetUsers();
 
             return View(users);
+        }
+        [HttpGet]
+        public ActionResult AffichageProducteur()
+        {
+            User user = new User();
+            user = UserManager.getInfos();
+            return View(user);
         }
     }
 }
