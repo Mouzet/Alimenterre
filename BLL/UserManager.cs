@@ -10,9 +10,9 @@ namespace BLL
 {
     public class UserManager
     {
-        public static User getInfos(int idUser)
+        public static User GetInfos(int idUser)
         {
-
+            return UserDB.GetInfos(idUser);
         }
         public static List<User> GetUsers(int IdCanton, int IdProduit, int IdCategorieProduit, int IdCompetence, int IdActivite)
         {

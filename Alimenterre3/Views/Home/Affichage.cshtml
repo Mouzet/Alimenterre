@@ -11,7 +11,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.canton, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.canton, new SelectList(new string[] { "Fribourg", "Genève", "Valais", "Vaud" }, Model.canton))
+           
+                @Html.DropDownListFor(model => model.canton, new SelectList(new string[] {"", "Fribourg", "Genève", "Valais", "Vaud" }, Model.canton))
                 @Html.ValidationMessageFor(model => model.canton, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -19,7 +20,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.produit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.produit, new { htmlAttributes = new { @class = "form-control" } })
+        
+                @Html.DropDownListFor(model => model.produit, new SelectList(new string[] {"", "Tomate", "Poivron", "Houblon", "Blé" ,"Seigle","Lait","Cochon","Cheval"}, Model.produit))
                 @Html.ValidationMessageFor(model => model.produit, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -27,7 +29,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.typeProduit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.typeProduit, new { htmlAttributes = new { @class = "form-control" } })
+        
+                @Html.DropDownListFor(model => model.typeProduit, new SelectList(new string[] {"", "Légume", "Céréale", "Laitier", "Viande" }, Model.typeProduit))
+               
                 @Html.ValidationMessageFor(model => model.typeProduit, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -35,7 +39,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.competences, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.competences, new { htmlAttributes = new { @class = "form-control" } })
+               
+                @Html.DropDownListFor(model => model.competences, new SelectList(new string[] {"", "Gestion et coordination au développement", "Accompagnement des projets", "Gestion Guichet"}, Model.typeProduit))
                 @Html.ValidationMessageFor(model => model.competences, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -43,19 +48,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.activite, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.activite, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.activite, new SelectList(new string[] {"", "Brasseur", "Maraicher", "Agriculteur" }, Model.activite))
                 @Html.ValidationMessageFor(model => model.activite, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Rechercher" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+

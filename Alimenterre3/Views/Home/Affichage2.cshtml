@@ -1,0 +1,46 @@
+﻿@model Alimenterre3.ViewModels.RechercheVM
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Recherche Producteur</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.canton, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(model => model.canton, new SelectList(new string[] { "", "Fribourg", "Genève", "Valais", "Vaud" }, Model.canton))
+                @Html.ValidationMessageFor(model => model.canton, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+      
+        <div class="form-group">
+            @Html.LabelFor(model => model.competences, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(model => model.competences, new SelectList(new string[] { "", "Gestion et coordination au développement", "Accompagnement des projets", "Gestion Guichet" }, Model.typeProduit))
+                @Html.ValidationMessageFor(model => model.competences, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.activite, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.activite, new SelectList(new string[] { "", "Brasseur", "Maraicher", "Agriculteur" }, Model.activite))
+                @Html.ValidationMessageFor(model => model.activite, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Rechercher" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
