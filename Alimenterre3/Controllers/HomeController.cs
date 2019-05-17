@@ -41,10 +41,7 @@ namespace Alimenterre3.Controllers
             return View(vm);
         }
 
-            List<User> users = new List<User>();
-            users = UserManager.GetUsers();
-
-            return View(users);
-        }
+      
+        
     }
 }
