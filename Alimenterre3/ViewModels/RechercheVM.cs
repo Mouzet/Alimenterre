@@ -10,24 +10,19 @@ namespace Alimenterre3.ViewModels
     {
   
         [Display(Name = "Canton")]
-        public IEnumerable<string> Canton { get; set; }
-        public string SelectedValue { get; set; }
+        public string canton { get; set; }
     
         [Display(Name = "Produit")]
-        public IEnumerable<string> Produit { get; set; }
-        public string SelectedValue2 { get; set; }
+        public string produit { get; set; }
 
         [Display(Name = "Type de Produit")]
-        public IEnumerable<string> Categorie { get; set; }
-        public string SelectedValue3 { get; set; }
+        public string typeProduit { get; set; }
 
         [Display(Name = "Compétences")]
-        public IEnumerable<string> Competences { get; set; }
-        public string SelectedValue4 { get; set; }
+        public string competences { get; set; }
   
         [Display(Name =  "Activité")]
-        public IEnumerable<string> Activite { get; set; }
-        public string SelectedValue5 { get; set; }
+        public string activite { get; set; }
         
     }
 }

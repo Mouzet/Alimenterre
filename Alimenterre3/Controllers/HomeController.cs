@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Alimenterre3.ViewModels;
 using BLL;
 
 namespace Alimenterre3.Controllers
@@ -32,21 +33,18 @@ namespace Alimenterre3.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public ActionResult Affichage()
         {
+            RechercheVM vm = new RechercheVM();
+            return View(vm);
+        }
 
             List<User> users = new List<User>();
-             users = UserManager.GetUsers();
+            users = UserManager.GetUsers();
 
             return View(users);
-        }
-        [HttpGet]
-        public ActionResult AffichageProducteur()
-        {
-            User user = new User();
-            user = UserManager.getInfos();
-            return View(user);
         }
     }
 }
